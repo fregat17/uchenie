@@ -1,15 +1,18 @@
 import socket
 
-
 clientsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 clientsock.connect(("127.0.0.1", 8888))
-print("connected")
 
-index = 0
 while True:
-    print("sending data")
-    clientsock.send(b'chel')
-    print("data sent")
+    message = input('Message: ')
+    clientsock.send(message.encode('ascii'))
     data = clientsock.recv(1024)
-    print(f'{index}Echoing: ', data)
-    index += 1
+    print('Server answers: ', data)
+
+    ans = input('\nContinue? (y/n) :')
+    if ans == 'y':
+        continue
+    else:
+        break
+
+clientsock.close()
