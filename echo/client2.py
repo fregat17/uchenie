@@ -9,8 +9,8 @@ while True:
     data = clientsock.recv(1024)
     print('Server answers: ', data)
 
-    ans = input('\nContinue? (y/n) :')
-    if ans == 'y':
+    next_echo = input('\nContinue? (y/n) :')
+    if next_echo == 'y':
         continue
     else:
         break
